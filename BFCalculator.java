@@ -9,9 +9,8 @@ public class BFCalculator {
   BigFraction[] registers = new BigFraction[26];
   BigFraction lastValue;
 
-  public BFCalculator(BigFraction defValue, BigFraction[] registers){
-    this.lastValue = defValue;
-    this.registers = registers;
+  public BFCalculator(){
+
 
   }
 
@@ -23,24 +22,10 @@ public class BFCalculator {
   }
  
   public BigFraction evaluate(String exp){
-    /**
-     * steps:
-     * take in string (done)
-     * separate argument 1 and argument 2 (done)
-     * separate operator (done)
-     * match operator with method (done)
-     * apply method to arg1 and arg2 (done)
-     * return result (done)
-     */
-    /**
-     * my plan:
-     * compile regular expression
-     * use regular expressions X|Y to find operator
-     * 
-     */
-
-    Pattern operators = Pattern.compile("(\\+|\\*|\\-|\\÷)");
-    Pattern digits = Pattern.compile("\\d\\s|\\s\\d|\\n");
+   
+    Pattern operators = Pattern.compile("(\\s\\+\\s|\\s\\*\\s|\\s\\-\\s|\\s\\÷\\s)");
+    Pattern digits = Pattern.compile("\\d\\/\\d\\s|\\s\\d\\/\\d\\s|\\s\\d\\/\\d");
+    PrintWriter pen = new PrintWriter (System.out, true);
 
 
     String[] argumentArray = operators.split(exp);
@@ -48,28 +33,55 @@ public class BFCalculator {
     int numArgs = argumentArray.length;
     String[] operatorArray = digits.split(exp);
     int i = 0;
-    int n = i + 1;
     BigFraction result = new BigFraction("0/1");
-    BigFraction argOne = new BigFraction(argumentArray[i]);
-    BigFraction argTwo = new BigFraction(argumentArray[n]);
+    BigFraction[] newArgumentArray = new BigFraction[numArgs];
+    
+    pen.println("Checkpoint 1");
+    while (i < numArgs){ //change strings into BigFractions
+      newArgumentArray[i] = new BigFraction(argumentArray[i]);
+      i++;
+    }
+    
+    i = 0; //resetting i
 
+    BigFraction argOne = (newArgumentArray[i]);
+    BigFraction argTwo = (newArgumentArray[i + 1]);
+    
+    pen.println("Checkpoint 2");
     while(i < numArgs){ 
-     result = argOne.calculate(operatorArray[n], argTwo); 
+      pen.println(argumentArray[i]);
+      i++;
+     } 
+     
+     i = 0;
+     
+     pen.println("Checkpoint 3");
+     
+    while(i + 1 < numArgs){
+      String currentOperator = operatorArray[i + 1];
+      pen.println("argOne iteration " + i + " is " + argOne);
+      pen.println("argTwo iteration " + i + " is " + argTwo);
+      pen.println("currentOp iteration " + i + " is " + currentOperator);
+      //tests end
+     result = argOne.calculate(currentOperator, argTwo); 
+     pen.println("result iteration " + i + " is " + result);
      argOne = result;
+     // why isnt this getting the right argument?? it's always getting the first one
+     i++;
     } 
-
+    
     this.lastValue = result;
     return result;
   }
+    // JUST FOR TESTING WHILE IT'S NOT DONE
     public static void main(String[] args) throws Exception{ // delete main once I'm done
-      BigFraction[] registers = new BigFraction[26];
-      BigFraction def = new BigFraction("1/1");
-      BFCalculator calculator = new BFCalculator(def, registers);  
+      BFCalculator calculator = new BFCalculator();  
       PrintWriter pen = new PrintWriter(System.out, true);
       BigFraction e = new BigFraction("2/7");
-      //pen.println(calculator.evaluate("1/2 + 2/3")); number format exception???
+      BigFraction test = calculator.evaluate("1/2 + 2/3 - 4/5");
+      pen.println("Checkpoint 2");
       calculator.store('c');
-      pen.println(calculator.registers[0]); 
+    
 
     }
 }
