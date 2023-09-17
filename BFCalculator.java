@@ -4,8 +4,24 @@ import java.util.regex.Pattern;
 
 public class BFCalculator {
   
- 
+  
+  
+  BigFraction[] registers = new BigFraction[26];
+  BigFraction lastValue;
 
+  public BFCalculator(BigFraction defValue, BigFraction[] registers){
+    this.lastValue = defValue;
+    this.registers = registers;
+
+  }
+
+  public void store(char register){
+    int numRegister = (int) register - 97;
+    PrintWriter pen = new PrintWriter(System.out, true);
+    pen.println(numRegister);
+    registers[numRegister] = lastValue;
+  }
+ 
   public BigFraction evaluate(String exp){
     /**
      * steps:
@@ -22,9 +38,8 @@ public class BFCalculator {
      * use regular expressions X|Y to find operator
      * 
      */
-    PrintWriter pen = new PrintWriter(System.out, true);
 
-    Pattern operators = Pattern.compile("(\\+|\\*|\\-)");
+    Pattern operators = Pattern.compile("(\\+|\\*|\\-|\\÷)");
     Pattern digits = Pattern.compile("\\d\\s|\\s\\d|\\n");
 
 
@@ -38,18 +53,23 @@ public class BFCalculator {
     BigFraction argOne = new BigFraction(argumentArray[i]);
     BigFraction argTwo = new BigFraction(argumentArray[n]);
 
-    while(i < numArgs){ //this is going to evaluate the operations im not sure how. we need store first I think. need to store the results of each subop then use if else to match
-      // problem: operator array starts at 1 whereas argarray starts at 0. theyre both the same size bc theres one less operator than argument
-     result = argOne.calculate(operatorArray[n], argTwo); // should one of the arguments be result? also need to add reduce to the basic operations
+    while(i < numArgs){ 
+     result = argOne.calculate(operatorArray[n], argTwo); 
      argOne = result;
     } 
+
+    this.lastValue = result;
     return result;
   }
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception{ // delete main once I'm done
+      BigFraction[] registers = new BigFraction[26];
+      BigFraction def = new BigFraction("1/1");
+      BFCalculator calculator = new BFCalculator(def, registers);  
       PrintWriter pen = new PrintWriter(System.out, true);
       BigFraction e = new BigFraction("2/7");
-    
-      BigFraction m = new BigFraction("1/4");
-      pen.println(e.calculate("+", e));
+      //pen.println(calculator.evaluate("1/2 + 2/3")); number format exception???
+      calculator.store('c');
+      pen.println(calculator.registers[0]); 
+
     }
 }

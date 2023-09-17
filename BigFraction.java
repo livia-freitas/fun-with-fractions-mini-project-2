@@ -345,6 +345,8 @@ public BigFraction calculate(String operator, BigFraction calculateMe){
     return this.subtract(calculateMe);
   } else if (operator.equals("*")){
     return this.multiply(calculateMe);
+  } else if(operator.equals("÷")){
+    return this.divide(calculateMe);
   } else{
     return null;
   }
