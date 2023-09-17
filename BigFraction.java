@@ -159,6 +159,43 @@ public class BigFraction {
   } // doubleValue()
 
 
+/**
+
+   * Reduces a BigFraction to its simplest form.
+
+   * @return
+
+   */
+
+  public BigFraction reduce(){
+  
+    BigInteger resultNumerator;
+  
+    BigInteger resultDenominator;
+  
+    BigInteger numerator = this.num;
+  
+    BigInteger denominator = this.denom;
+  
+    // 8/64 is being
+    
+    BigInteger GCD = numerator.gcd(denominator);
+  
+    // the numerator of the result is this object's numerator
+  
+    // divided by the gcd between the numerator and denominator
+  
+    resultNumerator = numerator.divide(GCD);
+  
+    // the denominator of the result is this object's denominator
+  
+    // divided by the gcd between the numerator and denominator
+  
+    resultDenominator = denominator.divide(GCD);
+  
+    return new BigFraction(resultNumerator, resultDenominator);
+  }
+
   /**
 
    * Add the BigFraction `addMe` to this BigFraction.
@@ -184,10 +221,10 @@ public class BigFraction {
 
     resultNumerator = (this.num.multiply(addMe.denom)).add(addMe.num.multiply(this.denom));
 
-
+    BigFraction result = new BigFraction(resultNumerator, resultDenominator);
     // Return the computed value
 
-    return new BigFraction(resultNumerator, resultDenominator);
+    return result.reduce();
 
   }// add(BigFraction)
 
@@ -220,10 +257,10 @@ public class BigFraction {
 
   resultDenominator = this.denom.multiply(multiplyMe.denom);
 
+  BigFraction result = new BigFraction(resultNumerator, resultDenominator);
+    // Return the computed value
 
-  return new BigFraction(resultNumerator, resultDenominator);
-
-
+    return result.reduce();
 
 }
 /**
@@ -253,7 +290,10 @@ resultNumerator = this.num.multiply(divideMe.denom);
 
 resultDenominator = this.denom.multiply(divideMe.num);
 
-return new BigFraction(resultNumerator, resultDenominator);
+BigFraction result = new BigFraction(resultNumerator, resultDenominator);
+    // Return the computed value
+
+return result.reduce();
 
 }
 
@@ -289,47 +329,14 @@ resultDenominator = this.denom.multiply(subtractMe.denom);
 
 resultNumerator = (this.num.multiply(subtractMe.denom)).subtract(subtractMe.num.multiply(this.denom));
 
+BigFraction result = new BigFraction(resultNumerator, resultDenominator);
+    // Return the computed value
 
-return new BigFraction(resultNumerator, resultDenominator);
+return result.reduce();
 
 }
 
-/**
 
-   * Reduces a BigFraction to its simplest form.
-
-   * @return
-
-   */
-
-public BigFraction reduce(){
-  
-  BigInteger resultNumerator;
-
-  BigInteger resultDenominator;
-
-  BigInteger numerator = this.num;
-
-  BigInteger denominator = this.denom;
-
-  // 8/64 is being
-  
-  BigInteger GCD = numerator.gcd(denominator);
-
-  // the numerator of the result is this object's numerator
-
-  // divided by the gcd between the numerator and denominator
-
-  resultNumerator = numerator.divide(GCD);
-
-  // the denominator of the result is this object's denominator
-
-  // divided by the gcd between the numerator and denominator
-
-  resultDenominator = denominator.divide(GCD);
-
-  return new BigFraction(resultNumerator, resultDenominator);
-}
 
 public BigFraction calculate(String operator, BigFraction calculateMe){
   if (operator.equals("+")){
@@ -354,7 +361,10 @@ public BigFraction calculate(String operator, BigFraction calculateMe){
 
   resultDenominator = this.denom;
 
-  return new BigFraction(resultNumerator, resultDenominator);
+  BigFraction result = new BigFraction(resultNumerator, resultDenominator);
+    // Return the computed value
+
+  return result.reduce();
 
   }
 
@@ -431,12 +441,14 @@ BigFraction e = new BigFraction("2/7");
 
 BigFraction m = new BigFraction("1/4");
 
-BigFraction n = new BigFraction("8/64");
+BigFraction n = new BigFraction("3/9");
 
-
+pen.println("2/7 + 3/9 = " + e.add(n));
+pen.println("2/7 divided by 3/9 = " + e.divide(n));
 pen.println("2/7 minus 1/4 = " + e.subtract(m));
-pen.println("8/64 simplified is: " + n.reduce());
+pen.println("3/9 simplified is: " + n.reduce());
 pen.println("1/4 times 2/7 is: " + m.calculate("*", e));
+
 
 
 
