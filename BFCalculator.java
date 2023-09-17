@@ -4,17 +4,8 @@ import java.util.regex.Pattern;
 
 public class BFCalculator {
   
-  public BigFraction calculate(String operator, BigFraction argOne, BigFraction argTwo){
-    if (operator.equals("+")){
-     return argOne.add(argTwo);
-    } else if (operator.equals("-")){
-      return argOne.subtract(argTwo);
-    } else if (operator.equals("*")){
-      return argOne.multiply(argTwo);
-    } else{
-      return null;
-    }
-  }
+ 
+
   public BigFraction evaluate(String exp){
     /**
      * steps:
@@ -49,12 +40,16 @@ public class BFCalculator {
 
     while(i < numArgs){ //this is going to evaluate the operations im not sure how. we need store first I think. need to store the results of each subop then use if else to match
       // problem: operator array starts at 1 whereas argarray starts at 0. theyre both the same size bc theres one less operator than argument
-     result = calculate(operatorArray[n], argOne, argTwo); // should one of the arguments be result? also need to add reduce to the basic operations
+     result = argOne.calculate(operatorArray[n], argTwo); // should one of the arguments be result? also need to add reduce to the basic operations
      argOne = result;
     } 
     return result;
-    
   }
-
-  
+    public static void main(String[] args) throws Exception{
+      PrintWriter pen = new PrintWriter(System.out, true);
+      BigFraction e = new BigFraction("2/7");
+    
+      BigFraction m = new BigFraction("1/4");
+      pen.println(e.calculate("+", e));
+    }
 }

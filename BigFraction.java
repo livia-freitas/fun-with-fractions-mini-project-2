@@ -331,6 +331,18 @@ public BigFraction reduce(){
   return new BigFraction(resultNumerator, resultDenominator);
 }
 
+public BigFraction calculate(String operator, BigFraction calculateMe){
+  if (operator.equals("+")){
+   return this.add(calculateMe);
+  } else if (operator.equals("-")){
+    return this.subtract(calculateMe);
+  } else if (operator.equals("*")){
+    return this.multiply(calculateMe);
+  } else{
+    return null;
+  }
+}
+
   public BigFraction fractional(){
 
   BigInteger resultNumerator;
@@ -424,7 +436,7 @@ BigFraction n = new BigFraction("8/64");
 
 pen.println("2/7 minus 1/4 = " + e.subtract(m));
 pen.println("8/64 simplified is: " + n.reduce());
-String exp = new String("1 + 4");
+pen.println("1/4 times 2/7 is: " + m.calculate("*", e));
 
 
 
