@@ -5,3 +5,6 @@ Acknowledgements:
 
 "Cannot make a static reference to the non-static method..."
 https://www.w3docs.com/snippets/java/cannot-make-a-static-reference-to-the-non-static-method.html#:~:text=The%20%22Cannot%20make%20a%20static,an%20instance%20of%20the%20class.
+
+"The constructor ... is undefined"
+https://stackoverflow.com/questions/18159104/java-error-the-constructor-is-undefined
