@@ -1,5 +1,5 @@
+package mp2;
 import java.math.BigInteger;
-
 import java.io.PrintWriter;
 
 
@@ -120,13 +120,17 @@ public class BigFraction {
    // THERES A PROBLEM WITH THIS CONSTRUCTOR!!!!!! ITS ONLY TAKING FRACTIONS WITH ONLY ONE DIGIT
   public BigFraction(String str) {
 
-    String num1 = str.substring (0, 1);
+    int slashIndex = str.indexOf('/');
+
+    int endOfString = str.length();
+
+    String num1 = str.substring(0, slashIndex);
 
     int numInt = Integer.parseInt(num1);
 
     this.num = BigInteger.valueOf(numInt);
 
-    String num2 = str.substring (2, 3);
+    String num2 = str.substring (slashIndex + 1, endOfString);
 
     int numInt2 = Integer.parseInt(num2);
 
@@ -411,18 +415,19 @@ public static void main(String[] args) throws Exception{
 
 PrintWriter pen = new PrintWriter(System.out, true);
 
-BigFraction f = new BigFraction(7, 2);
-
-BigFraction g = new BigFraction(11, 4);
-
 BigFraction e = new BigFraction("2/7");
 
 BigFraction m = new BigFraction("1/4");
 
 BigFraction n = new BigFraction("8/64");
 
+
 pen.println("2/7 minus 1/4 = " + e.subtract(m));
 pen.println("8/64 simplified is: " + n.reduce());
+String exp = new String("1 + 4");
+
+
+
 
   }//main
 
