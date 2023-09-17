@@ -13,3 +13,10 @@ https://www.w3docs.com/snippets/java/cannot-make-a-static-reference-to-the-non-s
 "The constructor ... is undefined"
 
 https://stackoverflow.com/questions/18159104/java-error-the-constructor-is-undefined
+
+User input procedures
+
+https://www.codecademy.com/resources/docs/java/user-input 
+
+contains()
+https://www.w3schools.com/java/ref_string_contains.asp
