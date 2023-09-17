@@ -45,7 +45,7 @@ public class BFCalculator {
     i = 0; //resetting i
 
     BigFraction argOne = (newArgumentArray[i]);
-    BigFraction argTwo = (newArgumentArray[i + 1]);
+   
     
     pen.println("Checkpoint 2");
     while(i < numArgs){ 
@@ -59,14 +59,13 @@ public class BFCalculator {
      
     while(i + 1 < numArgs){
       String currentOperator = operatorArray[i + 1];
+      BigFraction argTwo = (newArgumentArray[i + 1]);
       pen.println("argOne iteration " + i + " is " + argOne);
       pen.println("argTwo iteration " + i + " is " + argTwo);
       pen.println("currentOp iteration " + i + " is " + currentOperator);
-      //tests end
      result = argOne.calculate(currentOperator, argTwo); 
      pen.println("result iteration " + i + " is " + result);
      argOne = result;
-     // why isnt this getting the right argument?? it's always getting the first one
      i++;
     } 
     
@@ -78,10 +77,8 @@ public class BFCalculator {
       BFCalculator calculator = new BFCalculator();  
       PrintWriter pen = new PrintWriter(System.out, true);
       BigFraction e = new BigFraction("2/7");
-      BigFraction test = calculator.evaluate("1/2 + 2/3 - 4/5");
-      pen.println("Checkpoint 2");
+      BigFraction test = calculator.evaluate("1/2 ÷ 2/3 * 4/5 + 2/5");
       calculator.store('c');
     
-
     }
 }
