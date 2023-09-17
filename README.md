@@ -4,6 +4,7 @@ An interactive calculator built in java that has fractions as its basic numeric 
 
 Acknowledgements:
 
+Samuel Rebelsky helped me debug when my classes weren't properly referencing each other.
 
 "Cannot make a static reference to the non-static method..."
 
