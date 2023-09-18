@@ -21,3 +21,7 @@ https://www.codecademy.com/resources/docs/java/user-input
 contains()
 
 https://www.w3schools.com/java/ref_string_contains.asp
+
+command line arguments for Quick Calculator
+
+https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html
