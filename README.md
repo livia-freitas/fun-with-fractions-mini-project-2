@@ -25,3 +25,12 @@ https://www.w3schools.com/java/ref_string_contains.asp
 command line arguments for Quick Calculator
 
 https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html
+
+Eclipse error... cannot be resolved to a type
+
+https://www.w3docs.com/snippets/java/eclipse-error-cannot-be-resolved-to-a-type.html#:~:text=If%20you%20are%20seeing%20an,to%20use%20in%20your%20code.
+
+String out of bounds exception
+
+https://rollbar.com/blog/java-stringoutofboundsexception/#:~:text=The%20StringIndexOutOfBoundsException%20is%20an%20unchecked,the%20length%20of%20the%20string.
+
