@@ -19,4 +19,5 @@ User input procedures
 https://www.codecademy.com/resources/docs/java/user-input 
 
 contains()
+
 https://www.w3schools.com/java/ref_string_contains.asp
