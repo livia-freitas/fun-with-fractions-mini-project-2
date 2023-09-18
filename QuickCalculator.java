@@ -1,4 +1,6 @@
+package mp2;
 import java.io.PrintWriter;
+
 
 public class QuickCalculator {
   public static void main (String[] args) throws Exception{     
@@ -15,13 +17,13 @@ public class QuickCalculator {
 
     for(String s: args){
       if (s.contains("STORE")){
-        int storeIndex = userInput.lastIndexOf("STORE");
-        int charIndex = storeIndex + 2;
-        char charRegister = userInput.charAt(charIndex);
+        int storeIndex = s.lastIndexOf("STORE");
+        int charIndex = storeIndex + 6;
+        char charRegister = s.charAt(charIndex);
         calculator.store(charRegister);
         continue;
       }//if(s.contains"STORE")
-      pen.println("\n->" + calculator.evaluate(userInput) + "\n");           
+      pen.println("\n->" + calculator.evaluate(s) + "\n");           
     } //for(String s: args)
   } // main()
 } // QuickCalculator
