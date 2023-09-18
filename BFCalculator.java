@@ -23,7 +23,7 @@ public class BFCalculator {
   public BigFraction evaluate(String exp){
    
     Pattern operators = Pattern.compile("(\\s\\+\\s|\\s\\*\\s|\\s\\-\\s|\\s\\÷\\s)");
-    Pattern digits = Pattern.compile("\\d\\/\\d\\s|\\s\\d\\/\\d\\s|\\s\\d\\/\\d");
+    Pattern digits = Pattern.compile("\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}");
     PrintWriter pen = new PrintWriter (System.out, true);
 
 
@@ -57,15 +57,5 @@ public class BFCalculator {
     this.lastValue = result;
     return result;
   }
-    // JUST FOR TESTING WHILE IT'S NOT DONE
-    public static void main(String[] args) throws Exception{ // delete main once I'm done
-      BFCalculator calculator = new BFCalculator();  
-      PrintWriter pen = new PrintWriter(System.out, true);
-      BigFraction e = new BigFraction("2/7");
-      BigFraction test = calculator.evaluate("1/2 ÷ 2/3 * 4/5 + 2/5 - 1/2");
-      pen.println("result is: " + test + " Should be 1/2.");
-      calculator.store('c');
-      pen.println("c: " + calculator.registers[2]);
-    
-    }
+  
 }

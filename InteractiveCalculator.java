@@ -1,6 +1,7 @@
 package mp2;
-import java.util.Scanner;
+import java.util.Scanner;  
 import java.io.PrintWriter;
+
 
 public class InteractiveCalculator {
   public static void main (String[] args) throws Exception{
@@ -22,13 +23,14 @@ public class InteractiveCalculator {
     while(userInput.equals("QUIT") == false){
       userInput = myScanner.nextLine();
       if (userInput.contains("STORE")){
-        // beginning of things I modified in laptop
-        int storeIndex = userInput.lastIndexOf("STORE");
-        int charIndex = storeIndex + 2;
-        char charRegister = userInput.charAt(charIndex);
-        calculator.store(charRegister);
-        //end of things I modified in laptop
-      }           
+
+       int charIndex = 6;
+       char charRegister = userInput.charAt(charIndex);
+       calculator.store(charRegister);
+       //end of things I modified in laptop
+       pen.println("\n");
+       continue;
+      }          
       pen.println("\n->" + calculator.evaluate(userInput) + "\n");
     }
 
