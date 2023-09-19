@@ -105,7 +105,19 @@ public class BigFraction {
 
   } // BigFraction(int, int)
 
+/**
+ * 
+ * Build a BigFraction that gets its value from a BFCalculator register
+ * 
+ * @param charRegister
+ * @param calculator
+ * 
+ */
 
+ public BigFraction(char charRegister, BFCalculator calculator){
+  this.num = calculator.registers[charRegister].num;
+  this.denom = calculator.registers[charRegister].num;
+ }
   /**
 
    * Build a new BigFraction by parsing a string.

@@ -1,22 +1,25 @@
 package mp2;
-import java.io.PrintWriter;
 import java.util.regex.Pattern;
 
+/**
+ * @author Livia Stein Freitas
+ * Project: Mini-Project 2, "Fun With Fractions", for CSC-207 taught by Samuel Rebelsky
+ * 
+ * A calculator class that takes in string mathematical expressions, evaluates them,
+ * returns the result, and stores the last result upon request.
+ */
+
 public class BFCalculator {
-  
-  
   
   BigFraction[] registers = new BigFraction[26];
   BigFraction lastValue;
 
   public BFCalculator(){
 
-
   }
 
   public void store(char register){
     int numRegister = (int) register - 97;
-    PrintWriter pen = new PrintWriter(System.out, true);
     registers[numRegister] = lastValue;
   }
  
@@ -24,7 +27,6 @@ public class BFCalculator {
    
     Pattern operators = Pattern.compile("(\\s\\+\\s|\\s\\*\\s|\\s\\-\\s|\\s\\÷\\s)");
     Pattern digits = Pattern.compile("\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}");
-    PrintWriter pen = new PrintWriter (System.out, true);
 
 
     String[] argumentArray = operators.split(exp);

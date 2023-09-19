@@ -1,8 +1,15 @@
 package mp2;
 import java.io.PrintWriter;
 
+/**
+ * @author Livia Stein Freitas
+ * Project: Mini-Project 2, "Fun With Fractions", for CSC-207 taught by Samuel Rebelsky
+ * 
+ * An interface for a calculator that takes expressions in the form of a string from the command line,
+ * then evaluates them left-to-right (no priority.)
+ */
 
-public class QuickCalculator {
+ public class QuickCalculator {
   public static void main (String[] args) throws Exception{     
     PrintWriter pen = new PrintWriter(System.out, true);
     BFCalculator calculator = new BFCalculator(); 
