@@ -18,11 +18,21 @@ public class BFCalculator {
 
   }
 
+  /**
+   * Stores the result computed by the calculator.
+   * 
+   * @param register
+   */
   public void store(char register){
     int numRegister = (int) register - 97;
     registers[numRegister] = lastValue;
   }
  
+  /**
+   * Takes in a mathematical expression and returns the result
+   * @param exp
+   * @return
+   */
   public BigFraction evaluate(String exp){
    
     Pattern operators = Pattern.compile("(\\s\\+\\s|\\s\\*\\s|\\s\\-\\s|\\s\\÷\\s)");
