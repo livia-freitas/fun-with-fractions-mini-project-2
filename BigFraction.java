@@ -105,6 +105,18 @@ public class BigFraction {
 
   } // BigFraction(int, int)
 
+/** Build a BigFraction from an integer with no fractional parts */
+
+public BigFraction(int number) {
+
+  this.num = BigInteger.valueOf(number);
+
+  this.denom = BigInteger.valueOf(1);
+
+} // BigFraction(int, int)
+
+
+
 /**
  * 
  * Build a BigFraction that gets its value from a BFCalculator register
@@ -129,24 +141,37 @@ public class BigFraction {
    */
 
 
-   // THERES A PROBLEM WITH THIS CONSTRUCTOR!!!!!! ITS ONLY TAKING FRACTIONS WITH ONLY ONE DIGIT
+   
   public BigFraction(String str) {
-
-    int slashIndex = str.indexOf('/');
 
     int endOfString = str.length();
 
-    String num1 = str.substring(0, slashIndex);
+    
+    if(str.contains("/") == false){
+      
+      int strFraction = Integer.parseInt(str);
 
-    int numInt = Integer.parseInt(num1);
+      this.num = BigInteger.valueOf(strFraction);
 
-    this.num = BigInteger.valueOf(numInt);
+      this.denom = BigInteger.valueOf(1);
 
-    String num2 = str.substring (slashIndex + 1, endOfString);
+      
+    } else{
+      int slashIndex = str.indexOf('/');
 
-    int numInt2 = Integer.parseInt(num2);
+      String num1 = str.substring(0, slashIndex);
+    
+      int numInt = Integer.parseInt(num1);
 
-    this.denom = BigInteger.valueOf(numInt2);
+      this.num = BigInteger.valueOf(numInt);
+
+      String num2 = str.substring (slashIndex + 1, endOfString);
+  
+      int numInt2 = Integer.parseInt(num2);
+  
+      this.denom = BigInteger.valueOf(numInt2);
+    }
+   
 
   } // BigFraction
 
@@ -451,17 +476,19 @@ public static void main(String[] args) throws Exception{
 
 PrintWriter pen = new PrintWriter(System.out, true);
 
-BigFraction e = new BigFraction("2/7");
+BigFraction e = new BigFraction("2");
 
-BigFraction m = new BigFraction("1/4");
+BigFraction m = new BigFraction("1");
 
 BigFraction n = new BigFraction("3/9");
 
-pen.println("2/7 + 3/9 = " + e.add(n));
-pen.println("2/7 divided by 3/9 = " + e.divide(n));
-pen.println("2/7 minus 1/4 = " + e.subtract(m));
+pen.println(e);
+pen.println(m);
+pen.println("2 + 3/9 = " + e.add(n));
+pen.println("2 divided by 3/9 = " + e.divide(n));
+pen.println("2 minus 1 = " + e.subtract(m));
 pen.println("3/9 simplified is: " + n.reduce());
-pen.println("1/4 times 2/7 is: " + m.calculate("*", e));
+pen.println("1 times 2 is: " + m.calculate("*", e));
 
 
 
