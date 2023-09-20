@@ -24,13 +24,15 @@ public class InteractiveCalculator {
       pen.println("÷ for division\n");
       pen.println("Write QUIT to stop the program.\n");
 
-      String userInput = myScanner.nextLine();           
-      pen.println("\n->" + calculator.evaluate(userInput) + "\n");
+      
 
-      while(userInput.equals("QUIT") == false){
-        userInput = myScanner.nextLine();
+      while(true){
+        String userInput = myScanner.nextLine();           
+        if (userInput.equals("QUIT")){
+          break;
+        }
+        
         if (userInput.contains("STORE")){
-
          int charIndex = 6;
          char charRegister = userInput.charAt(charIndex);
          calculator.store(charRegister);
@@ -41,7 +43,5 @@ public class InteractiveCalculator {
         pen.println("\n->" + calculator.evaluate(userInput) + "\n");
       }
     }
-
-    
   }
 }

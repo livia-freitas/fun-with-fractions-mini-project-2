@@ -36,8 +36,7 @@ public class BFCalculator {
   public BigFraction evaluate(String exp){
    
     Pattern operators = Pattern.compile("(\\s\\+\\s|\\s\\*\\s|\\s\\-\\s|\\s\\÷\\s)");
-    Pattern digits = Pattern.compile("\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}");
-
+    Pattern digits = Pattern.compile("\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}\\s|\\s\\p{Alnum}\\/\\p{Alnum}|\\p{Alnum}\\s|\\s\\p{Alnum}\\s|\\s\\p{Alnum}"); 
 
     String[] argumentArray = operators.split(exp);
     //issue
@@ -47,8 +46,15 @@ public class BFCalculator {
     BigFraction result = new BigFraction("0/1");
     BigFraction[] newArgumentArray = new BigFraction[numArgs];
     
-    while (i < numArgs){ //change strings into BigFractions
-      newArgumentArray[i] = new BigFraction(argumentArray[i]);
+    while (i < numArgs){ //change strings into BigFractions and gets the value of registers
+      boolean isAlpha =  Pattern.matches("\\p{Lower}", argumentArray[i]);
+      if(isAlpha){
+        char[] tempCharArray = argumentArray[i].toCharArray();
+        char charReg = tempCharArray[0];
+        newArgumentArray[i] = registers[charReg - 97];
+      } else {
+        newArgumentArray[i] = new BigFraction(argumentArray[i]);
+      }
       i++;
     }
     

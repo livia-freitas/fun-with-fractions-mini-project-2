@@ -1,4 +1,5 @@
 package mp2;
+import java.util.Scanner;  
 import java.io.PrintWriter;
 
 /**
@@ -10,6 +11,10 @@ import java.io.PrintWriter;
  */
 
  public class QuickCalculator {
+  /**
+   * @param args
+   * @throws Exception
+   */
   public static void main (String[] args) throws Exception{     
     PrintWriter pen = new PrintWriter(System.out, true);
     BFCalculator calculator = new BFCalculator(); 
